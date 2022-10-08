@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Home Page</h1>
+    <div class="text-center">
+        <h1>Keep Your Life,</h1>
+        <h1>Stay Under Control</h1>
+        <p>{% lorem 1 b random %}</p>
+        <div class="row">
+            <div class="col-sm-12" style="display: flex; flex-direction: row;justify-content: center;align-items:center;">
+              <button type="button"  class="btn btn-secondary m-2">Register</button>
+              <button type="button"  class="btn btn-secondary m-2">Login</button>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
