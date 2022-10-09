@@ -6,11 +6,11 @@
         <p>{% lorem 1 b random %}</p>
         <div class="row">
             <div class="col-sm-12" style="display: flex; flex-direction: row;justify-content: center;align-items:center;">
-              <button type="button"  class="btn btn-secondary m-2">
+              <button type="button"  class="btn btn-secondary m-2" onclick="location.href='{% url 'register_view' %}'">
                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                 Register
             </button>
-              <button type="button"  class="btn btn-primary m-2">
+              <button type="button"  class="btn btn-primary m-2" onclick="location.href='{% url 'login_view' %}'">
                 <i class="fa fa-sign-in" aria-hidden="true"></i>
                 Login
             </button>
