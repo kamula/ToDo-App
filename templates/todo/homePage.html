@@ -1,4 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Welcom {{request.user.username}}</h1>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card m-2">
+                <div class="card-header">
+                  <h3>Categories</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-11">Personal</div>
+                            <div class="col-md-1" style="border-radius: 50%;background: #707070;">1</div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-11">Office</div>
+                            <div class="col-md-1" style="border-radius: 50%;background: #707070;">1</div>
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h3 class="text-center">TODO APPLICATION</h3>
+        </div>
+    </div>
+</div>
 {% endblock content %}
