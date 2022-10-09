@@ -1,4 +1,6 @@
 from django.shortcuts import render
 
+
 def home(request):
-    return render(request,'todo/index.html')
+    '''Home view'''
+    return render(request, 'todo/index.html')
