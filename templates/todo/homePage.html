@@ -10,21 +10,32 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-11">Personal</div>
-                            <div class="col-md-1" style="border-radius: 50%;background: #707070;">1</div>
+                            <div class="col-md-11">
+                                <a href="#">Personal</a>
+                            </div>
+                            <div class="col-md-1">1</div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="row">
-                            <div class="col-md-11">Office</div>
-                            <div class="col-md-1" style="border-radius: 50%;background: #707070;">1</div>
+                            <div class="col-md-11">
+                                <a href="#">Office</a>
+                            </div>
+                            <div class="col-md-1">1</div>
                         </div>
-                    </li>                     
+                    </li>                    
                 </ul>
             </div>
         </div>
-        <div class="col-md-8">
-            <h3 class="text-center">TODO APPLICATION</h3>
+        <div class="col-md-8 border mt-2">
+            <h3 class="text-center m-3">TODOS</h3>
+            <hr>
+            <div class="d-flex flex-row-reverse">
+                <div class="p-2">
+                    <button type="button" class="btn btn-success">Add TASK</button>
+                </div>                
+            </div>
+            {% include 'partials/TodoCard.html' %}
         </div>
     </div>
 </div>
