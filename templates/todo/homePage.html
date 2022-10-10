@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     <div class="row">
         <div class="col-md-4">
             <div class="card m-2">
@@ -8,22 +15,20 @@
                   <h3>Categories</h3>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <a href="#">Personal</a>
-                            </div>
-                            <div class="col-md-1">1</div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <a href="#">Office</a>
-                            </div>
-                            <div class="col-md-1">1</div>
-                        </div>
-                    </li>  
+                    {% if categories %}
+                        {% for category in categories %}
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <a href="#">{{category.name}}</a>
+                                    </div>
+                                    <div class="col-md-1">1</div>
+                                </div>
+                            </li>
+                        {% endfor %}                         
+                    {%else%}
+                        <h3 class="text-warning">No categories Available</h3>
+                    {% endif %}                                       
                     <li class="list-group-item">
                         <!-- Button trigger add Category modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategoryModal" style="width:100%;">
@@ -41,14 +46,15 @@
                                 </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method='POST' action="{% url 'add_category_view' %}">
+                                        {% csrf_token %}
                                         <div class="form-group">
                                             <label for="formGroupExampleInput">Category Name</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Category Name" required>
+                                            <input type="text" class="form-control" name="name" id="formGroupExampleInput" placeholder="Category Name" required>
                                         </div> 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="btn btn-primary">Add</button>
                                         </div>                                       
                                     </form>
                                 </div>
@@ -65,7 +71,10 @@
             <hr>
             <div class="d-flex flex-row-reverse">
                 <div class="p-2">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add TASK</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                        Add TASK
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
                 </div> 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -83,11 +92,9 @@
                                 <div class="form-group m-2">
                                     <label for="exampleFormControlSelect1">Select Category</label>
                                     <select class="form-control" id="exampleFormControlSelect1">
-                                      <option>1</option>
-                                      <option>2</option>
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
+                                        {% for category in categories %}
+                                            <option value="category.id">{{category.name}}</option>                                      
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <div class="form-group m-2">
@@ -104,7 +111,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-success">Save changes</button>
+                                    <button type="submit" class="btn btn-success">Add</button>
                                 </div>
                             </form>
                         </div>                        
