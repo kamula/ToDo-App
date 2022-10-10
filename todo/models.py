@@ -27,7 +27,8 @@ class Todo(models.Model):
                           editable=False, default=uuid.uuid4)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
-    scheduled_time = models.DateField()
+    category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True,blank=True)
+    scheduled_time = models.DateTimeField()
     status = models.CharField(
         max_length=50, blank=True, null=True, choices=STATUS_CHOICES,default='pending')
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
