@@ -11,4 +11,4 @@ class CreateCategoryForm(forms.ModelForm):
 class CreateTodoForm(forms.ModelForm):
     class Meta:
         model = Todo
-        fields = ['title', 'description', 'scheduled_time']
+        fields = ['created_by','title', 'category','description', 'scheduled_time']
