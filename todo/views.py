@@ -17,7 +17,7 @@ def home(request):
     '''Home view'''
     context = {}
     categories = Category.objects.filter(created_by=request.user)
-    todos = Todo.objects.filter(created_by=request.user)
+    todos = Todo.objects.filter(created_by=request.user,status = 'pending')
     from datetime import date
     context['categories'] = categories
     context['todos'] = todos
