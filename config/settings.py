@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
     'crispy_forms',
     'crispy_bootstrap5',
 
@@ -136,3 +137,7 @@ LOGOUT_REDIRECT_URL = 'login_view'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# CRONJOBS = [
+#     ('*/1 * * * *', 'accounts.cron.my_cron_job')
+# ]
