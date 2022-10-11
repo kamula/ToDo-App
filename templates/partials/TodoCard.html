@@ -1,7 +1,7 @@
 <div class="card shadow-lg mt-2">
     <div class="card-header">
         <h6>
-            {{todo.title}}
+            Title: {{todo.title}}
         </h6>
     </div>
     <div class="card-body">
@@ -78,7 +78,7 @@
             </div>                        
           </div>
         <p class="card-text">
-            <i class="fa-regular fa-calendar-days"></i>
+            Time: <i class="fa-regular fa-calendar-days"></i>
             {{todo.scheduled_time}}
         </p>
         <p class="card-text">{{todo.description}}</p>
@@ -110,6 +110,6 @@
         </div>
     </div>
     <div class="card-footer text-muted">
-        {{todo.category}}
+        Category: {{todo.category}}
     </div>
   </div>
