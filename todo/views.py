@@ -1,3 +1,4 @@
+from asyncio import Task
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
@@ -52,5 +53,33 @@ def add_todo_task(request):
     else:
         print(form.errors)
         messages.add_message(request, messages.WARNING,
-                                'Process Failed')
+                             'Process Failed')
         return redirect('home_view')
+
+
+@login_required(login_url='login_view')
+def edit_todo_task(request, id):
+    '''edit task'''
+    obj = Todo.objects.get(id=id)
+    title = request.POST.get('title')
+    description = request.POST.get('description')
+    category = request.POST.get('category')
+    scheduled_time = request.POST.get('scheduled_time') or obj.scheduled_time
+    Todo.objects.filter(id=id).update(title=title, description=description,
+                                      category=category, scheduled_time=scheduled_time)
+
+    return redirect('home_view')
+
+
+@login_required(login_url='login_view')
+def complete_todo_task(request, id):
+    '''Mark task as Completed'''
+    Todo.objects.filter(id=id).update(status='completed')
+    return redirect('home_view')
+
+
+@login_required(login_url='login_view')
+def delete_todo_task(request, id):
+    '''Delete task'''
+    Todo.objects.get(id=id).delete()
+    return redirect('home_view')
