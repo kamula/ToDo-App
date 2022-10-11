@@ -14,9 +14,10 @@ def landing_view(request):
 
 @login_required(login_url='login_view')
 def home(request):
+    from django.db.models import Count
     '''Home view'''
-    context = {}
-    categories = Category.objects.filter(created_by=request.user)
+    context = {}    
+    categories = Category.objects.filter(created_by=request.user).annotate(num_count=Count('todo'))    
     todos = Todo.objects.filter(created_by=request.user,status = 'pending')
     from datetime import date
     context['categories'] = categories
